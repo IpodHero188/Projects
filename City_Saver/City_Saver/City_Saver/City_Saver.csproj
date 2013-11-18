@@ -73,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ObjectClasses\People.cs" />
-    <Compile Include="ObjectClasses\Telekinesis.cs" />
     <Compile Include="ObjectClasses\TK_Shield.cs" />
     <Compile Include="ObjectClasses\TK_Shot.cs" />
     <Compile Include="ObjectClasses\Weapon.cs" />
