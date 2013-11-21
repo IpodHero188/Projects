@@ -71,7 +71,15 @@ namespace City_Saver
                 this.Exit();
 
             // TODO: Add your update logic here
+            
 
+            /*
+             * Add the pause feature here?
+             * Would be like:
+             *  if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed && GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Released)
+            {
+            }
+             */
             base.Update(gameTime);
         }
 
