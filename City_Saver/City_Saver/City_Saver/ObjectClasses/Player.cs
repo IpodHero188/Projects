@@ -16,10 +16,19 @@ namespace City_Saver.ObjectClasses
     {
         GamePadState currentControl;//the controller state of the player
         //The Telekinesis abilities of the player
-        TK_Shield barrier = new TK_Shield();
-        TK_Shot shot = new TK_Shot();
+        //TK_Shield barrier = new TK_Shield();      //Implemented further down
+        //TK_Shot shot = new TK_Shot();             //Implemented further down
+        Vector2 playerPosition = new Vector2(0, 0);     //Give player a starting position; can be changed easily
+        float latMovementSpeed = 0.95f;             //Multiplication factor for movement speed
+
+        /********Variables for pausing the game*********/
+        bool gamePaused = false;
+        bool pauseKeyDown = false;
+
+
         public Player()
         {
+            
         }
 
         /*
@@ -28,45 +37,110 @@ namespace City_Saver.ObjectClasses
 
         public void Update(GameTime gameTime)
         {
+            TK_Shot shot = new TK_Shot();
+            TK_Shield barrier = new TK_Shield();
             //moves the player right-forward
-            if (currentControl.ThumbSticks.Right.X == 1.0f)
+            if (currentControl.IsConnected)
             {
+                /******Checking for user pause******/
+                checkForPauseKey(currentControl);
+
+
+
+
+                //if (currentControl.ThumbSticks.Left.X == 1.0f)
+                //{
+                //    playerPosition.X += (currentControl.ThumbSticks.Left.X * latMovementSpeed);
+                //}
+                ////moves the player left-backwards
+                //else if (currentControl.ThumbSticks.Left.X == 1.0f)
+                //{
+                //    playerPosition.X -= (currentControl.ThumbSticks.Left.X * latMovementSpeed);
+                //}
+
+                /**********Handles Left and Right Horizontal movement */
+                playerPosition.X += (currentControl.ThumbSticks.Left.X * latMovementSpeed);
+                
+
+                /**********Handles Up and Down Vertical movement */
+                playerPosition.Y += (currentControl.ThumbSticks.Left.Y * latMovementSpeed);
+
+                /*
+                 * The vertical movement of the player
+                 * HERE
+                 */
+
+                //if (currentControl.ThumbSticks.Left == )
+                //{
+                    
+                //}
+
+
+                /*
+                 * The diagonal movement of the player
+                 * HERE
+                 */
+
+                /*
+                 * The telekinesis ability activation by the player
+                 * LT = TK Shot
+                 * RT = TK Shield
+                 */
+                //Activate the TK Shot
+                if (currentControl.Triggers.Left == 1.0f)
+                {
+                    shot.playAnimation();
+                }
+                else
+                {
+                    shot.endAnimation();
+                }
+
+                //Activates the TK Shield
+                if (currentControl.Triggers.Right == 1.0f)
+                {
+                    barrier.playAnimation();
+                }
+                else
+                {
+                    barrier.stopAnimation();
+                }
+
             }
-                //moves the player left-backwards
-            else if (currentControl.ThumbSticks.Left.X == 1.0f)
-            {
-            }
-
-            /*
-             * The vertical movement of the player
-             * HERE
-             */
-
-            /*
-             * The diagonal movement of the player
-             * HERE
-             */
-
-            /*
-             * The telekinesis ability activation by the player
-             * LT = TK Shot
-             * RT = TK Shield
-             */
-            //Activate the TK Shot
-            if (currentControl.Triggers.Left == 1.0f)
-            {
-            }
-
-            //Activates the TK Shield
-            if (currentControl.Triggers.Right == 1.0f)
-            {
-            }
-
         }
 
         void Animation.walkAnimation.playWalkAnimation()
         {
             
         }
+
+        //Check for beginning of Pause
+        private void BeginPause(bool playerPause)
+        {
+            gamePaused = true;
+            //TODO: Pause any audio
+            //TODO: Pause any vibration
+        }
+
+        //Check for end of Pause
+        private void EndPause()
+        {
+            gamePaused = false;
+        }
+
+        private void checkForPauseKey(GamePadState gamePadState)
+        {
+            bool pauseKeyDownNow = (gamePadState.Buttons.Start == ButtonState.Pressed);
+
+            if (!pauseKeyDown && pauseKeyDownNow)
+            {
+                if (!gamePaused)
+                    BeginPause(true);
+                else
+                    EndPause();
+            }
+            pauseKeyDown = pauseKeyDownNow;
+        }
+
     }
 }
