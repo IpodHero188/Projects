@@ -30,11 +30,26 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Background\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Char\TestSpriteBackGround.png">
       <Name>TestSpriteBackGround</Name>
+=======
+    <Compile Include="SpriteAnimation\Hero%28Exile%29AttackAnimation.png">
+      <Name>Hero%28Exile%29AttackAnimation</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="SpriteAnimation\Hero%28Exile%29BackWalkingAnimation.png">
+      <Name>Hero%28Exile%29BackWalkingAnimation</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="SpriteAnimation\Hero%28Exile%29Walking Animation.png">
+      <Name>Hero%28Exile%29Walking Animation</Name>
+>>>>>>> 9dafc3ba491afbde517d1fb95805897097fa9d6f
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
