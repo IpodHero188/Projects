@@ -73,6 +73,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\Animation.cs" />
     <Compile Include="Animation\attackAnimation.cs" />
     <Compile Include="Animation\walkAnimation.cs" />
     <Compile Include="Animation\SpriteManager.cs" />
